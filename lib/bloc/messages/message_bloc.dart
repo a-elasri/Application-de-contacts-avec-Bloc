@@ -21,27 +21,27 @@ class MessageBloc extends Bloc<MessageEvent,MessageState>{
         }
 
     });
-
-    // on send message
-    on<AddMessageEvent>((event, emit) async {
-      emit(MessageState(
-          messages: [],
-          requestState: RequestState.Loading,
-          currentEvent: event));
-      try {
-        messageRepository.addMessage(event.message,event.id);
-        emit(MessageState(
-            messages: await messageRepository.messagesByContact(event.id),
-            requestState: RequestState.Loaded,
-            currentEvent: event));
-      } catch (e) {
-        emit(MessageState(
-            messages: [],
-            requestState: RequestState.Error,
-            errorMessage: e.toString(),
-            currentEvent: event));
-      }
-    });
+    //
+    // // on send message
+    // on<AddMessageEvent>((event, emit) async {
+    //   emit(MessageState(
+    //       messages: [],
+    //       requestState: RequestState.Loading,
+    //       currentEvent: event));
+    //   try {
+    //     messageRepository.addMessage(event.message,event.id);
+    //     emit(MessageState(
+    //         messages: await messageRepository.messagesByContact(event.id),
+    //         requestState: RequestState.Loaded,
+    //         currentEvent: event));
+    //   } catch (e) {
+    //     emit(MessageState(
+    //         messages: [],
+    //         requestState: RequestState.Error,
+    //         errorMessage: e.toString(),
+    //         currentEvent: event));
+    //   }
+    // });
 
   }
 

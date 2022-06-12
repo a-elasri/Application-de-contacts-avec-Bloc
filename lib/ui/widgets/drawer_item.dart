@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/contacts/contact_bloc.dart';
+import '../../bloc/news/news_bloc.dart';
 
 
 class DrawerItem extends StatelessWidget{
@@ -19,10 +20,10 @@ class DrawerItem extends StatelessWidget{
         {
           context.read<ContactBloc>().add(LoadAllContactsEvent());
         }
-        // if(route=="/news")
-        // {
-        //   context.read<NewsBloc>().add(LoadAllAdherentEvent());
-        // }
+        if(route=="/news")
+        {
+          context.read<NewsBloc>();
+        }
         Navigator.pushNamed(context, route);
       },
       leading: icon,
